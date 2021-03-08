@@ -1,5 +1,5 @@
 import React from 'react'
-import { Animated, StyleSheet, View, SafeAreaView, Text } from 'react-native'
+import { Animated, StyleSheet, View, Text, TextInput } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
 const styles = StyleSheet.create({
@@ -56,7 +56,9 @@ const ItemDetail = (props) => {
             size={200}
             name="question-circle-o"
           ></FontAwesome>
-          <Text style={styles.text}>{qText}</Text>
+          <TextInput multiline={true} style={styles.text}>
+            {qText}
+          </TextInput>
         </View>
         <View style={styles.detailContainer}>
           <FontAwesome
@@ -64,7 +66,9 @@ const ItemDetail = (props) => {
             size={200}
             name="comment-o"
           ></FontAwesome>
-          <Text style={styles.text}>{aText}</Text>
+          <TextInput multiline={true} style={styles.text}>
+            {aText}
+          </TextInput>
         </View>
       </View>
     </Animated.View>
