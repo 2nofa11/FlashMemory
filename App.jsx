@@ -1,13 +1,13 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, SafeAreaView, FlatList } from 'react-native'
 import ListItem from './component/ListItem'
+import articles from './dummy/articles.json'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: Platform.OS === 'android' ? 25 : 0,
   },
   itemContainer: {
     height: 70,
@@ -43,12 +43,18 @@ const styles = StyleSheet.create({
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ListItem
-        qText="これが質問文です。"
-        aText="これが回答です。"
-        checkFlg={true}
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={articles}
+        renderItem={({ item }) => (
+          <ListItem
+            qText={item.qText}
+            aText={item.aText}
+            checkFlg={item.checkFlg}
+          />
+        )}
+        keyExtractor={(item, index) => index.toString()}
       />
-    </View>
+    </SafeAreaView>
   )
 }

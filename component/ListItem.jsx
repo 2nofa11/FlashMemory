@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     height: 70,
     width: '100%',
     borderColor: 'gray',
-    borderWidth: 1,
+    borderBottomWidth: 1,
     flexDirection: 'row',
   },
   qaContainer: {
