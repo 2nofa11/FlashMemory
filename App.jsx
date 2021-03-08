@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'
+import { StyleSheet, View } from 'react-native'
 import ListItem from './component/ListItem'
 
 const styles = StyleSheet.create({
@@ -45,7 +44,11 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <View style={styles.container}>
-      <ListItem />
+      <ListItem
+        qText="これが質問文です。"
+        aText="これが回答です。"
+        checkFlg={true}
+      />
     </View>
   )
 }
