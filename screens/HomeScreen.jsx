@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
+  const { navigation } = props
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -51,6 +52,8 @@ export default function HomeScreen() {
             qText={item.qText}
             aText={item.aText}
             checkFlg={item.checkFlg}
+            onPress={() => navigation.navigate('Detail', { article: item })}
+            // onPress={() => navigation.navigate('Detail', { article: item })}
           />
         )}
         keyExtractor={(item, index) => index.toString()}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
 const styles = StyleSheet.create({
@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
 })
 
 const ListItem = (props) => {
-  const { qText, aText, checkFlg } = props
+  const { qText, aText, checkFlg, onPress } = props
   const checkColor = checkFlg ? 'green' : 'gray'
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.qaContainer}>
         <View style={styles.detailContainer}>
           <FontAwesome
@@ -69,7 +69,7 @@ const ListItem = (props) => {
           name="check-square"
         ></FontAwesome>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
