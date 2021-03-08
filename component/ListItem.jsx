@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons'
 
 const styles = StyleSheet.create({
   itemContainer: {
-    height: 70,
+    height: 84,
     width: '100%',
     borderColor: 'gray',
     borderBottomWidth: 1,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     padding: 1,
   },
   detailContainer: {
-    height: 32,
+    height: 40,
     flexDirection: 'row',
   },
   qaIcon: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   text: {
     width: '90%',
-    fontSize: 12,
+    fontSize: 14,
   },
 })
 

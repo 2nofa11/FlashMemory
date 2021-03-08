@@ -53,7 +53,6 @@ export default function HomeScreen(props) {
             aText={item.aText}
             checkFlg={item.checkFlg}
             onPress={() => navigation.navigate('Detail', { article: item })}
-            // onPress={() => navigation.navigate('Detail', { article: item })}
           />
         )}
         keyExtractor={(item, index) => index.toString()}
