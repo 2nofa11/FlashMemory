@@ -1,5 +1,7 @@
 import React from 'react'
-import { StyleSheet, SafeAreaView, Text } from 'react-native'
+import { StyleSheet, SafeAreaView, Text, FlatList } from 'react-native'
+import { useSelector } from 'react-redux'
+import ItemDetail from '../component/ItemDetail'
 
 const styles = StyleSheet.create({
   container: {
@@ -11,10 +13,19 @@ const styles = StyleSheet.create({
   },
 })
 
-export default FlashScreen = () => {
+export default FlashScreen = ({ navigation }) => {
+  const user = useSelector((state) => state.user)
+  const { clips } = user
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Flash</Text>
+      <FlatList
+        data={clips}
+        renderItem={({ item }) => (
+          <ItemDetail qText={item.qText} aText={item.aText} />
+        )}
+        keyExtractor={(item, index) => index.toString()}
+      />
     </SafeAreaView>
   )
 }

@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import HomeScreen from '../screens/HomeScreen'
 import DetailScreen from '../screens/DetailScreen'
 import FlashScreen from '../screens/FlashScreen'
+import PlusScreen from '../screens/PlusScreen'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesome } from '@expo/vector-icons'
 
@@ -39,12 +40,25 @@ const FlashStack = () => {
   )
 }
 
+const PlusStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="PlusStack"
+        component={PlusScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  )
+}
+
 const sereenOption = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
     let iconName
-
     if (route.name === 'Home') {
       iconName = 'home'
+    } else if (route.name === 'Plus') {
+      iconName = 'plus'
     } else if (route.name === 'Flash') {
       iconName = 'check-square'
     }
@@ -58,6 +72,7 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Tab.Navigator screenOptions={sereenOption}>
         <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Plus" component={PlusStack} />
         <Tab.Screen name="Flash" component={FlashStack} />
       </Tab.Navigator>
     </NavigationContainer>

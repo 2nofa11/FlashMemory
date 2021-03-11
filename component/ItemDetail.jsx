@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Animated, StyleSheet, View, Text, TextInput } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
 })
 
 const ItemDetail = (props) => {
-  const { qText, aText } = props
+  const { qText, aText, onChangeQText, onChangeAText } = props
+
   return (
     <Animated.View>
       <View style={styles.box}>
@@ -56,7 +57,11 @@ const ItemDetail = (props) => {
             size={200}
             name="question-circle-o"
           ></FontAwesome>
-          <TextInput multiline={true} style={styles.text}>
+          <TextInput
+            multiline={true}
+            style={styles.text}
+            onChangeText={(e) => onChangeQText(e)}
+          >
             {qText}
           </TextInput>
         </View>
@@ -66,7 +71,11 @@ const ItemDetail = (props) => {
             size={200}
             name="comment-o"
           ></FontAwesome>
-          <TextInput multiline={true} style={styles.text}>
+          <TextInput
+            multiline={true}
+            style={styles.text}
+            onChangeText={(e) => onChangeAText(e)}
+          >
             {aText}
           </TextInput>
         </View>
