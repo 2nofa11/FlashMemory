@@ -46,7 +46,7 @@ const PlusStack = () => {
       <Stack.Screen
         name="PlusStack"
         component={PlusScreen}
-        options={{ headerShown: false }}
+        options={{ headerShown: true }}
       />
     </Stack.Navigator>
   )

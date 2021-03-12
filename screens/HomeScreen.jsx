@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, View, SafeAreaView, FlatList, Button } from 'react-native'
 import ListItem from '../component/ListItem'
 import articles from '../dummy/articles.json'
+import { useDispatch, useSelector } from 'react-redux'
 
 const styles = StyleSheet.create({
   container: {
@@ -43,10 +44,13 @@ const styles = StyleSheet.create({
 
 export default function HomeScreen(props) {
   const { navigation } = props
+  const user = useSelector((state) => state.user)
+  const { clips } = user
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={articles}
+        data={clips}
         renderItem={({ item }) => (
           <ListItem
             qText={item.qText}

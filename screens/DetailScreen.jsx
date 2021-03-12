@@ -1,6 +1,7 @@
-import React from 'react'
-import { StyleSheet, SafeAreaView, TouchableOpacity, Text } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, SafeAreaView } from 'react-native'
 import ItemDetail from '../component/ItemDetail'
+import EditButton from '../component/EditButton'
 import { useDispatch } from 'react-redux'
 import { addClip, deleteClip } from '../store/actions/user'
 
@@ -18,24 +19,34 @@ export default DetailScreen = ({ route }) => {
   const { article } = route.params
 
   const dispatch = useDispatch()
+
+  const [qText, setQText] = useState(article.qText)
+  const [aText, setAText] = useState(article.aText)
+  const onChangeQText = (inputValue) => {
+    setQText(inputValue)
+  }
+  const onChangeAText = (inputValue) => {
+    setAText(inputValue)
+  }
   return (
     <SafeAreaView style={styles.container}>
-      <ItemDetail qText={article.qText} aText={article.aText} />
+      <ItemDetail
+        qText={qText}
+        aText={aText}
+        onChangeQText={onChangeQText}
+        onChangeAText={onChangeAText}
+      />
 
-      <TouchableOpacity
-        onPress={() => {
+      <EditButton
+        onPressUpdate={() => {
+          article.qText = qText
+          article.aText = aText
           dispatch(addClip({ clip: article }))
         }}
-      >
-        <Text style={{ margin: 10, fontSize: 30 }}>add</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
+        onPressDelete={() => {
           dispatch(deleteClip({ clip: article }))
         }}
-      >
-        <Text style={{ margin: 10, fontSize: 30 }}>del</Text>
-      </TouchableOpacity>
+      />
     </SafeAreaView>
   )
 }
